@@ -1,15 +1,3 @@
-/*
-
-/**
-  *****************************************************************************
-  * @project ticks_send
-  * @author  Kartik Madhira <kartikmadhira1@gmail.com>
-  * @date    28 Dec 2016
-  * @brief   Sending encoder ticks using the Encoder library from pjrc and arduino_rosserial
-
-  */
-
-
 #include <Encoder.h>
 #include <ros.h>
 #include <robot/ticks.h>
