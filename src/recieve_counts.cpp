@@ -1,3 +1,27 @@
+/*
+  recieve_counts TF and Odom topcic publisher
+  Copyright (c) 2016 Kartik Madhira.  All right reserved.
+
+  This node takes encoder counts coming from Arduino in a custom 
+  msg under ticks.h and via the ros subscriber callback function
+  and passes the data to the TF odom->base_link transform as well
+  as publishes the nav_msgs/Odometery data.
+  
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or (at your option) any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
+
 #include "ros/ros.h"
 #include "ros/time.h"
 #include "tf/tf.h"
@@ -53,7 +77,7 @@ int main (int argc, char **argv)
         double delta=(current_time-last_time).toSec();
 
         //getting the left and right wheel velocities
-        left_v=(delta_enc1 *  DIST_CONST)/(560 * delta);
+        left_v=(delta_enc1 *  DIST_CONST)/(1060 * delta);
         right_v=(delta_enc2 * DIST_CONST)/(560 * delta);
 
         X_vel=(left_v+right_v)/2;
